@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/assets/style/libs/normalize.css">
+    <link rel="stylesheet" href="/assets/style/style.min.css">
+    <script defer src="/assets/javascript/app.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body class="app">
+    <div class="app__template">
+        <ul class="scroll-indicator">
+            <li class="scroll-indicator__item"><a href="#home" data-name="Главная" data-scroll="home" class="scroll-indicator__link"></a></li>
+            <li class="scroll-indicator__item"><a href="#about" data-name="О нас"  data-scroll="about" class="scroll-indicator__link"></a></li>
+            <li class="scroll-indicator__item"><a href="#services" data-name="Услуги" data-scroll="services" class="scroll-indicator__link"></a></li>
+            <li class="scroll-indicator__item"><a href="#portfolio" data-name="Работы" data-scroll="portfolio" class="scroll-indicator__link"></a></li>
+            <li class="scroll-indicator__item"><a href="#contact" data-name="Контакты" data-scroll="contact" class="scroll-indicator__link"></a></li>
+        </ul>
+        <section class="section" id="home">
+            <div class="container">
+                <div class="wrapper">
+                    <h1 align="center">Главная</h1>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="about">
+            <div class="container">
+                <div class="wrapper">
+                    <h1 align="center">О нас</h1>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="services">
+            <div class="container">
+                <div class="wrapper">
+                    <h1 align="center">Услуги</h1>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="portfolio">
+            <div class="container">
+                <div class="wrapper">
+                    <h1 align="center">Работы</h1>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="contact">
+            <div class="container">
+                <div class="wrapper">
+                    <h1 align="center">Контакты</h1>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function(){
+        $(window).on('scroll', function(){
+            var link = $('.scroll-indicator__link');
+            var top = $(window).scrollTop();
+            $('.section').each(function(){
+                var id = $(this).attr(id);
+                var height = $(this).height();
+                var offset = $(this).offset().top - 150;
+                if(top >= offset && top < offset + height){
+                    link.removeClass('active');
+                    $('.scroll-indicator .scroll-indicator__item').find('[data-scroll="' + id + '"]').addClass('active');
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
